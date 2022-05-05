@@ -3,7 +3,9 @@
 # 命令
 * 编译:  
 ```
-ninja -C .
+mkdir build
+cd build
+ninja -C ..
 ```
 
 # 变量

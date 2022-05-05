@@ -1,14 +1,16 @@
 
 cflags = -Wall
 
+DIR = build
+
 rule cc
     command = gcc $cflags -c $in -o $out
 
 rule out
-    command = gcc $cflags $in -o $out && rm $in
+    command = gcc $cflags $in -o $out
 
 
-build lib_add.o: cc lib_add.c
-build lib_multi.o: cc lib_multi.c
-build main.o: cc main.c
-build out.o: out lib_add.o lib_multi.o main.o
+build $DIR/lib_add.o: cc lib_add.c
+build $DIR/lib_multi.o: cc lib_multi.c
+build $DIR/main.o: cc main.c
+build $DIR/out.o: out $DIR/lib_add.o $DIR/lib_multi.o $DIR/main.o
