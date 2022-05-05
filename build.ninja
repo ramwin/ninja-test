@@ -1,0 +1,14 @@
+
+cflags = -Wall
+
+rule cc
+    command = gcc $cflags -c $in -o $out
+
+rule out
+    command = gcc $cflags $in -o $out && rm $in
+
+
+build lib_add.o: cc lib_add.c
+build lib_multi.o: cc lib_multi.c
+build main.o: cc main.c
+build out.o: out lib_add.o lib_multi.o main.o
